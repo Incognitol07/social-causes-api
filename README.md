@@ -1,6 +1,6 @@
 # Social Causes API
 
-
+The **Social Causes API** is a RESTful API made to manage causes and contributions
 
 ## Tech Stack
 
@@ -98,3 +98,54 @@ Edit the `.env` file and update the variables with your configuration:
 ENVIRONMENT=development 
 DATABASE_URL=sqlite:///./causes.db
 ```  
+
+## Project Structure
+
+```plaintext
+social-causes-api/
+├── app/
+│   ├── main.py              # Application entry point
+│   ├── utils/               # Utility functions (e.g., logging)
+│   ├── router.py            # API endpoint router
+│   ├── schemas.py           # Pydantic models for request validation
+│   ├── models.py            # SQLAlchemy models
+│   ├── database.py          # Database connection and session handling
+│   └── config.py            # Configuration settings
+├── tests/                   # Tests
+├── requirements.txt         # Versions of installed packages
+├── .env                     # Environment variables
+└── README.md                # Project documentation
+```
+
+
+## Diagram
+
+Check out the Entity-Relationship Diagram in `diagrams\er-diagram.png`
+
+### Logging Support
+
+The API includes robust logging functionality to ensure transparency and ease of debugging. The logging system is configured to capture critical events to help maintain a secure and reliable system.
+
+#### Configuration
+
+Logging is configured in the `app/utils/logging_config.py` file and integrates with routers across the application.
+
+#### Example Log Structure
+
+Here is an example of a log entry:
+
+```plaintext
+[2024-11-20 14:32:15,123] - INFO - Cause with ID: 7d05f4de-3b6d-49f3-982b-fe8efe6e1458 not found.
+```
+
+## Testing the API
+
+You can test the API using **curl**, **Postman**, **Bruno**, or FastAPI's interactive docs available at `http://127.0.0.1:8000/docs`
+
+### Example Request
+
+To register a new user:
+
+```bash
+curl -X POST "http://127.0.0.1:8000/causes" -H "accept: application/json" -H "Content-Type: application/json" -d '{"title" :"Social Causes","description" : "A cause that is open to contributions","image_url" : "https://image.url"}'
+```
