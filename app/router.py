@@ -120,7 +120,7 @@ async def get_cause_contribution(id: UUID, db: Session = Depends(get_db)):
     logger.info(f"Total Contributions for cause ID {id}: {len(contributions)}, Total Amount: {total_amount}")
 
     return {
-        "total_contributions": len(contributions),
+        "contribution_count": len(contributions),
         "total_amount": total_amount,
         "contributions": contributions,
     }

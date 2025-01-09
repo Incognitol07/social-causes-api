@@ -22,4 +22,8 @@ def get_contributions_by_cause_id(cause_id: UUID, db: Session):
     contributions = db.query(Contribution).filter(Contribution.cause_id == cause_id).all()
     if not contributions:
         logger.info(f"No contributions found for cause with ID: {cause_id}")
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"No contributions were found for cause with ID: {cause_id}",
+        )
     return contributions

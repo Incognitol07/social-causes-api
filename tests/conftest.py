@@ -57,7 +57,7 @@ def test_cause():
 @pytest.fixture(scope="module")
 def test_cause_data():
     cause_data  = {
-    "title" : "Social Causes",
+    "title" : "Social Cause",
     "description" : "A cause that is open to contributions",
     "image_url" : "https://image.url"
     }
