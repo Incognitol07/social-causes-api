@@ -99,6 +99,16 @@ ENVIRONMENT=development
 DATABASE_URL=sqlite:///./causes.db
 ```  
 
+#### 4. **Run the application**:  
+
+   ```bash  
+   uvicorn app.main:app --reload  
+   ```  
+
+   The app will be available at `http://127.0.0.1:8000`.  
+
+---
+
 ## Project Structure
 
 ```plaintext
