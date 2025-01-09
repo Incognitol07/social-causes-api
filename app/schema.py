@@ -21,5 +21,10 @@ class ContributionResponse(CreateContribution):
     id: UUID
     cause_id: UUID
 
+class AllContributionResponse(BaseModel):
+    contribution_count: int
+    total_amount: float
+    contributions: list[ContributionResponse]
+
 class MessageResponse(BaseModel):
     message: str
