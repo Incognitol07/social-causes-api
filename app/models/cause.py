@@ -11,6 +11,6 @@ class Cause(Base):
     id = Column(UUID(as_uuid=True), default=uuid4, primary_key=True, index=True)
     title = Column(String, nullable=False)
     description =  Column(String, nullable= False)
-    image_url = Column(String, nullable=True)
+    image_url = Column(String, nullable=False)
 
     contributions = relationship("Contribution", back_populates="cause")

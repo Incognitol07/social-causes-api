@@ -9,12 +9,14 @@ from contextlib import asynccontextmanager
 from app.database import engine, Base
 from app.config import settings
 from app.utils import logger
+from app.router import cause_router
 
 # Create the FastAPI application
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Manage application lifespan events."""
     print("Starting up the application...")
+    Base.metadata.create_all(bind=engine)
     try:
         yield
     finally:
@@ -22,9 +24,9 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title=settings.APP_NAME,
-    description="An API",
+    description="An API to manage social causes and contributions",
     version="1.0.0",
-    debug=settings.DEBUG,  # Enable debug mode if in development
+    debug=settings.DEBUG,
     lifespan=lifespan,
 )
 
@@ -37,11 +39,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize database (create tables if they don't exist)
-Base.metadata.create_all(bind=engine)
 
 # Include routers
-
+app.include_router(cause_router)
 
 
 # Middleware to log route endpoints

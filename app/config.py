@@ -8,7 +8,7 @@ load_dotenv()
 
 class Settings(BaseSettings):
     # Application settings
-    APP_NAME: str = "App Name"
+    APP_NAME: str = "Social Cause API"
     ENVIRONMENT: str = os.getenv("ENVIRONMENT", "development")  # Default to 'development'
     DEBUG: bool = ENVIRONMENT == "development"
 
